@@ -29,9 +29,7 @@ export default function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
-
  
-
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -77,7 +75,6 @@ export default function Profile() {
         },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
       if (data.success === false) {
         dispatch(updateUserFailure(data.message));
@@ -112,7 +109,6 @@ export default function Profile() {
     try {
       dispatch(signOutUserStart());
       const res = await fetch('/api/auth/signout');
-      
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
